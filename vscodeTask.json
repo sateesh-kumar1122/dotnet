@@ -1,0 +1,15 @@
+{
+    "label": "Validate Azure Devops Pipeline YAML",
+    "windows": {
+        "command": "pwsh.exe"
+    },
+    "args": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "iwr https://gist.githubusercontent.com/JustinGrote/4ece827540da00d5ffce1d9eb593e56c/raw/04fba12299de888154b3f1eb526654b3c24fbc5a/Test-AzDOPipeline.ps1 | iex; Test-AzDOPipeline -Path ${file} -Organization justingrote -project github -pipelineid 1 -Credential (get-secret 'AzureDevopsPAT')"
+    ],
+    "problemMatcher": "$pester"
+}
